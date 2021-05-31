@@ -1,6 +1,8 @@
 package com.example.a7minuteworkoutapplication
 
+import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +15,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a7minuteworkoutapplication.databinding.ActivityExerciseBinding
+import com.example.a7minuteworkoutapplication.databinding.ConfirmationDialogBinding
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
@@ -54,7 +57,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         tts = TextToSpeech(this, this)
 
         binding.toolbarExerciseActivity.setNavigationOnClickListener {
-            onBackPressed()
+            makeConfirmationDialog()
         }
 
         exerciseList = Constants.defaultExerciseList()
@@ -141,6 +144,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
             //is executed when finished
             override fun onFinish() {
+                //if(currentExercisePosition < 2){
                 if (currentExercisePosition < exerciseList!!.size-1){
                     if (exerciseList!![currentExercisePosition].getIsSelected() == true) {
                         exerciseList!![currentExercisePosition].setIsSelected(false)
@@ -149,7 +153,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     }
                     setUpRestView()
                 }else{
-                    Toast.makeText(this@ExerciseActivity, "Congratulation Completed", Toast.LENGTH_LONG).show()
+                    //finish old activity cuz pressing back should take to home when finished
+                    finish()
+                    val intent = Intent(this@ExerciseActivity, FinalScreenActivity::class.java)
+                    startActivity(intent)
                 }
             }
         }.start()
@@ -197,5 +204,23 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding.rvExerciseStatus.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         exerciseAdapter = ExerciseStatusAdapter(exerciseList!!, this)
         binding.rvExerciseStatus.adapter = exerciseAdapter
+    }
+
+    private fun makeConfirmationDialog(){
+        val confirmationDialog = Dialog(this)
+        val binding2 = ConfirmationDialogBinding.inflate(layoutInflater)
+        confirmationDialog.setContentView(binding2.root)
+
+        binding2.apply {
+            buttonYes.setOnClickListener {
+                onBackPressed()
+                confirmationDialog.dismiss()
+            }
+
+            buttonNo.setOnClickListener {
+                confirmationDialog.dismiss()
+            }
+        }
+        confirmationDialog.show()
     }
 }
