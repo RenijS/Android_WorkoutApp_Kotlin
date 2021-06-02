@@ -144,8 +144,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
             //is executed when finished
             override fun onFinish() {
-                //if(currentExercisePosition < 2){
-                if (currentExercisePosition < exerciseList!!.size-1){
+                if(currentExercisePosition < 1){
+                //if (currentExercisePosition < exerciseList!!.size-1){
                     if (exerciseList!![currentExercisePosition].getIsSelected() == true) {
                         exerciseList!![currentExercisePosition].setIsSelected(false)
                         exerciseList!![currentExercisePosition].setIsCompleted(true)
