@@ -32,10 +32,10 @@
             android:layout_weight="1"
             android:checked="true"
             android:background="@drawable/unit_tab_selector"
-            android:text="METRIC UNITS"
+            android:text="@string/metric_units"
             android:textColor="@drawable/units_tab_text_color_selected"
             android:gravity="center"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:button="@null"/>
 
@@ -46,10 +46,10 @@
             android:layout_weight="1"
             android:checked="false"
             android:background="@drawable/unit_tab_selector"
-            android:text="US UNITS"
+            android:text="@string/us_units"
             android:textColor="@drawable/units_tab_text_color_selected"
             android:gravity="center"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:button="@null"/>
     </RadioGroup>
@@ -71,7 +71,7 @@
                 android:id="@+id/etMetricUnitWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Weight(in kg)"
+                android:hint="@string/weight_in_kg"
                 android:inputType="numberDecimal"
                 android:textSize="18sp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -86,7 +86,7 @@
                 android:id="@+id/etMetricUnitHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Height(in cm)"
+                android:hint="@string/height_in_cm"
                 android:inputType="numberDecimal"
                 android:textSize="18sp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -111,7 +111,7 @@
                 android:id="@+id/etUsUnitWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Weight(in kg)"
+                android:hint="@string/weight_in_kg"
                 android:inputType="numberDecimal"
                 android:textSize="18sp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -125,14 +125,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etUsUnitFt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Ft"
+                    android:hint="@string/ft"
                     android:inputType="number"
                     android:textSize="18sp"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -141,14 +141,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etUsUnitInch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Inch"
+                    android:hint="@string/inch"
                     android:inputType="number"
                     android:textSize="18sp"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -169,35 +169,35 @@
             android:id="@+id/tvYourBmi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="YOUR BMI"
-            android:textSize="18dp" />
+            android:text="@string/your_bmi"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tvBmiValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="15.0"
-            android:textSize="20dp" />
+            android:text="@string/_15_0"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvBmiType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Normal"
-            android:textSize="20dp" />
+            android:text="@string/normal"
+            android:textSize="20sp" />
         <TextView
             android:id="@+id/tvBmiDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Its description"
-            android:textSize="20dp" />
+            android:text="@string/its_description"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/buttonCalculate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calculate"
+        android:text="@string/calculate"
         android:layout_below="@+id/llBmi"
         android:backgroundTint="@android:color/holo_green_dark"
         android:textColor="@color/white"/>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,7 +8,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Are you sure?"
+        android:text="@string/are_you_sure"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="25sp"
@@ -25,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="This will stop your workout. \n You've come this far, are you sure \nyou want to quit?"
+        android:text="@string/this_will_stop_your_workout_n_you_ve_come_this_far_are_you_sure_nyou_want_to_quit"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:text="Yes"
+            android:text="@string/yes"
             android:backgroundTint="@android:color/holo_green_dark"/>
 
         <Button
@@ -58,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:text="No"
+            android:text="@string/no"
             android:backgroundTint="@android:color/holo_green_dark"/>
     </LinearLayout>
 
