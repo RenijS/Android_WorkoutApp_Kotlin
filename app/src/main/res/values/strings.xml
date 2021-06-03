@@ -37,4 +37,6 @@
     <string name="_7">7</string>
     <string name="exercise_completed">Exercise Completed</string>
     <string name="no_available_data">No Available Data</string>
+    <string name="change_rest_time">Change Rest Time</string>
+    <string name="change_workout_time">Change Workout Time</string>
 </resources>
