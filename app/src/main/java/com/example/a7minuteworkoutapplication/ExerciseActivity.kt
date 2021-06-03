@@ -42,6 +42,16 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private var exerciseAdapter: ExerciseStatusAdapter? = null
 
+    //resting time from intent
+    private var restTime: Int? = null
+    //single exercise time from intent
+    private var workoutTime: Int? = null
+
+    //resting time for timer
+    private var millisInFutureRest: Long? =  null
+    //exercise time for timer
+    private var millisInFutureWorkout: Long? =  null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExerciseBinding.inflate(layoutInflater)
@@ -52,6 +62,12 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
+
+        restTime = intent.extras?.getInt("RestTime")
+        millisInFutureRest = (restTime!!*1000).toLong()
+
+        workoutTime = intent.extras?.getInt("WorkoutTime")
+        millisInFutureWorkout = (workoutTime!!*1000).toLong()
 
         //initializing the text to speech
         tts = TextToSpeech(this, this)
@@ -91,12 +107,14 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun setRestProgressBar(){
 
         binding.progressBar.progress = restProgress
-        restTimer = object: CountDownTimer(10000, 1000){
+        binding.tvTimer.text = restTime!!.toString()
+        binding.progressBar.max = restTime!!
+        restTimer = object: CountDownTimer(millisInFutureRest!!, 1000){
             //is executed on every tick
             override fun onTick(p0: Long) {
                 restProgress++
-                binding.progressBar.progress = 10-restProgress
-                binding.tvTimer.text = (10-restProgress).toString()
+                binding.progressBar.progress = restTime!! -restProgress
+                binding.tvTimer.text = (restTime!!-restProgress).toString()
             }
             //is executed when finished
             override fun onFinish() {
@@ -122,7 +140,6 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             e.printStackTrace()
         }
 
-
         binding.llRestView.visibility = View.VISIBLE
         binding.llExerciseView.visibility = View.INVISIBLE
         if (restTimer != null){
@@ -135,17 +152,18 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun setExerciseProgressBar(){
         binding.progressBarExercise.progress = exerciseProgress
-        exerciseTimer = object: CountDownTimer(30000, 1000){
+        binding.progressBarExercise.max = workoutTime!!
+        exerciseTimer = object: CountDownTimer(millisInFutureWorkout!!, 1000){
             //is executed on every tick
             override fun onTick(p0: Long) {
                 exerciseProgress++
-                binding.progressBarExercise.progress = 30-exerciseProgress
-                binding.tvTimerExercise.text = (30-exerciseProgress).toString()
+                binding.progressBarExercise.progress = workoutTime!!-exerciseProgress
+                binding.tvTimerExercise.text = (workoutTime!!-exerciseProgress).toString()
             }
             //is executed when finished
             override fun onFinish() {
-                if(currentExercisePosition < 1){
-                //if (currentExercisePosition < exerciseList!!.size-1){
+                //if(currentExercisePosition < 1){
+                if (currentExercisePosition < exerciseList!!.size-1){
                     if (exerciseList!![currentExercisePosition].getIsSelected() == true) {
                         exerciseList!![currentExercisePosition].setIsSelected(false)
                         exerciseList!![currentExercisePosition].setIsCompleted(true)

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_7"
-        android:textSize="170sp"
+        android:textSize="100sp"
         android:textColor="@android:color/holo_green_dark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
         android:contentDescription="@string/time" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvWorkout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/workout"
@@ -56,7 +56,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv7"
+        app:layout_constraintTop_toBottomOf="@id/tvWorkout"
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
@@ -81,7 +81,7 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:baselineAligned="false"
-            android:layout_marginTop="100dp">
+            android:layout_marginTop="90dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -141,6 +141,32 @@
                     android:textColor="@android:color/holo_green_dark"
                     android:textStyle="bold"/>
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/buttonChangeRestTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/change_rest_time"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/white"
+                android:backgroundTint="@android:color/holo_green_dark"/>
+            <Button
+                android:id="@+id/buttonChangeWorkoutTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/change_workout_time"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/white"
+                android:backgroundTint="@android:color/holo_green_dark"/>
         </LinearLayout>
 
     </LinearLayout>
