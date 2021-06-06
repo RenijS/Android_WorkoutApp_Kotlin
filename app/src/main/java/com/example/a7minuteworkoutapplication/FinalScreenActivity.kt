@@ -1,10 +1,12 @@
 package com.example.a7minuteworkoutapplication
 
 import android.app.Dialog
+import android.content.Intent
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.a7minuteworkoutapplication.databinding.ActivityFinalScreenBinding
 import com.example.a7minuteworkoutapplication.databinding.ConfirmationDialogBinding
@@ -15,10 +17,16 @@ class FinalScreenActivity : AppCompatActivity(){
 
     private lateinit var binding:ActivityFinalScreenBinding
 
+    var selectedImg :Int? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFinalScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val selectedMood = intent.extras
+         selectedImg = selectedMood!!.getInt("Selected")
+
 
         setSupportActionBar(binding.toolbarExerciseActivity)
         //actionbar
@@ -37,10 +45,10 @@ class FinalScreenActivity : AppCompatActivity(){
             finish()
         }
 
-        savingDateToDatabase()
+        savingDataToDatabase()
     }
 
-    private fun savingDateToDatabase(){
+    private fun savingDataToDatabase(){
         val calendar = Calendar.getInstance()
         //current date time
         val dateTime = calendar.time
@@ -50,7 +58,7 @@ class FinalScreenActivity : AppCompatActivity(){
         val date = sdf.format(dateTime)
 
         val dbHandler = SqliteOpenHelper(this, null)
-        dbHandler.addDate(date)
+        dbHandler.addData(MyDataClass(date,selectedImg!!))
         Log.e("DATE", "added $date")
     }
 }

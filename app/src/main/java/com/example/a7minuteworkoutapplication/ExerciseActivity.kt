@@ -173,7 +173,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 }else{
                     //finish old activity cuz pressing back should take to home when finished
                     finish()
-                    val intent = Intent(this@ExerciseActivity, FinalScreenActivity::class.java)
+                    val intent = Intent(this@ExerciseActivity, MoodActivity::class.java)
                     startActivity(intent)
                 }
             }

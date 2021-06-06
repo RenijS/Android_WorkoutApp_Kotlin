@@ -9,12 +9,13 @@ import com.example.a7minuteworkoutapplication.databinding.ItemExerciseStatusBind
 import com.example.a7minuteworkoutapplication.databinding.ItemHistoryRowBinding
 import java.util.ArrayList
 
-class HistoryAdapter(val context: Context,val item: ArrayList<String>): RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
+class HistoryAdapter(val context: Context,val item: ArrayList<MyDataClass>): RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     class ViewHolder(binding: ItemHistoryRowBinding): RecyclerView.ViewHolder(binding.root){
         val llMainRow = binding.llHistoryMain
         val tvId = binding.tvId
         val tvDate = binding.tvDate
+        val tvMood = binding.ivMood
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,10 +24,12 @@ class HistoryAdapter(val context: Context,val item: ArrayList<String>): Recycler
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val date : String = item[position]
+        val date : String = item[position].date
+        val img: Int = item[position].img
         Log.e("HistoryAdapter", ""+date)
         holder.tvId.text = (position+1).toString()
         holder.tvDate.text = date
+        holder.tvMood.setImageResource(img)
     }
 
     override fun getItemCount(): Int {

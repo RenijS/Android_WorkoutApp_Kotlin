@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoodActivity"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tvQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How was the workout?"
+        android:textColor="#000000"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <LinearLayout
+        android:id="@+id/llFirstMood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/tvQ"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/ivMood0"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_mood_0"
+            android:layout_margin="3dp"/>
+
+        <ImageView
+            android:id="@+id/ivMood1"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_mood_1"
+            android:layout_margin="3dp"/>
+
+        <ImageView
+            android:id="@+id/ivMood2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_mood_2"
+            android:layout_margin="3dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSecondMood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/llFirstMood"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/ivMood3"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_mood_3"
+            android:layout_margin="3dp"/>
+
+        <ImageView
+            android:id="@+id/ivMood4"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_mood_4"
+            android:layout_margin="3dp"/>
+
+        <ImageView
+            android:id="@+id/ivMood5"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_mood_5"
+            android:layout_margin="3dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonEnter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="Enter"
+        app:layout_constraintTop_toBottomOf="@+id/llSecondMood"
+        tools:layout_editor_absoluteX="8dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
